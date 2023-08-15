@@ -1,12 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Express App</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Hello friends!</h1>
+    <h1>Calculator</h1>
+    <div id="result"></div>
     <img src="/images/logo.png" alt="Logo">
     <script src="/js/script.js"></script>
 </body>
+<script>
+    let num1 = 2;
+    let num2 = 4;
+
+    fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+    .then(Response => Response.json())
+    .then(data => {
+        document.getElementById('addResult').innerHTML = data.result;
+    });
+
+    fetch(`/calculator/subtract?num1=${num1}&num2=${num2}`)
+    .then(Response => Response.json())
+    .then(data => {
+        document.getElementById('subtractResult').innerHTML = data.result;
+    });
+
+    fetch(`/calculator/multiply?num1=${num1}&num2=${num2}`)
+    .then(Response => Response.json())
+    .then(data => {
+        document.getElementById('multiplyResult').innerHTML = data.result;
+    });
+
+    fetch(`/calculator/divide?num1=${num1}&num2=${num2}`)
+    .then(Response => Response.json())
+    .then(data => {
+        document.getElementById('divideResult').innerHTML = data.result;
+    });
+
+    fetch(`/operations/square?num=${num1}`)
+    .then(Response => Response.json())
+    .then(data => {
+        document.getElementById('squareResult').innerHTML = data.result;
+    });
+
+    fetch(`/operations/max?num1=${num1}&num2=${num2}`)
+    .then(Response => Response.json())
+    .then(data => {
+        document.getElementById('maxResult').innerHTML = data.result;
+    });
+
+</script>
 </html>
